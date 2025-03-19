@@ -1,14 +1,13 @@
-import 'dotenv/config'
-import express from 'express'
-import router from './router'
+import "dotenv/config";
+import express from "express";
+import router from "./router";
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.use(router)
+app.use(router);
 
 app.listen(process.env.PORT, () => {
-    console.log('Servidor Inicializado.');
-    
-})
+  console.log("Servidor Inicializado.");
+});

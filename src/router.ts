@@ -1,10 +1,10 @@
 import { Request, Response, Router } from "express";
+import CadastroLinkControlador from "./controllers/CadastroLinkControlador";
+import PesquisarLinkControlador from "./controllers/PesquisarLinkControlador";
 
-const router = Router()
+const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-    res.send('Tudo certo')
-    return
-})
+router.post("/", new CadastroLinkControlador().controlador);
+router.get("/:identificador", new PesquisarLinkControlador().controlador);
 
-export default router
+export default router;
