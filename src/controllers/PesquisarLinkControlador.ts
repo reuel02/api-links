@@ -1,15 +1,10 @@
 import { Request, Response } from "express";
-import { adicionarDados, lerDados } from "../utils/arquivos";
+import { adicionarDados, contarVisitas, lerDados } from "../utils/arquivos";
 import Link from "../models/Link";
 
 export default class PesquisarLinkControlador {
     async controlador(req: Request, res: Response){
         const { identificador } = req.params
-
-        if (!identificador) {
-            res.status(400).json({mensagem: 'O identificador deve ser informado.'})
-            return
-        }
 
         const bancodedados = await lerDados()
 
@@ -22,7 +17,11 @@ export default class PesquisarLinkControlador {
             return
         }
 
-        res.json(linkEncontrado)
+        await contarVisitas(linkEncontrado.identificador)
+
+        res.json({
+            url: linkEncontrado.url
+        })
         return
     }
 }

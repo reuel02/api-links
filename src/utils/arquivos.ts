@@ -23,7 +23,7 @@ export const contarVisitas = async (identificador: string) => {
         return link.identificador === identificador
     })
 
-    link!.visitas =+ 1
+    link!.visitas += 1
   
     await fs.writeFile(bancodedados, JSON.stringify(dados, null, "\t"));
   };
