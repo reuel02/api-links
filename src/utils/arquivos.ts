@@ -17,13 +17,13 @@ export const adicionarDados = async (link: Link) => {
 };
 
 export const contarVisitas = async (identificador: string) => {
-    const dados = await lerDados();
+  const dados = await lerDados();
 
-    const link = dados.find(link => {
-        return link.identificador === identificador
-    })
+  const link = dados.find((link) => {
+    return link.identificador === identificador;
+  });
 
-    link!.visitas += 1
-  
-    await fs.writeFile(bancodedados, JSON.stringify(dados, null, "\t"));
-  };
+  link!.visitas += 1;
+
+  await fs.writeFile(bancodedados, JSON.stringify(dados, null, "\t"));
+};
